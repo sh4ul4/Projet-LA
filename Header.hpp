@@ -19,6 +19,14 @@ public:
         if (left != nullptr) delete left;
         if (right != nullptr) delete right;
     }
+    void removeLeft(void) { // be aware this function does not remove the part of the left-branch upwards
+        if (left != nullptr) delete left;
+        left = nullptr;
+    }
+    void removeRight(void) { // be aware this function does not remove the part of the right-branch upwards
+        if (right != nullptr) delete right;
+        right = nullptr;
+    }
     void setLeft(const Sommet& s) {
         Sommet* newS = new Sommet(s);
         left = newS;
@@ -68,7 +76,7 @@ public:
     ArbreB() = delete;
     ArbreB(const Sommet& root) :root(root) {}
     void setRoot(Sommet root) { this->root = root; }
-    const ArbreB operator+(const ArbreB& t) {
+    const ArbreB operator+(const ArbreB& t)const {
         ArbreB res(root + t.root);
         return res;
     }
