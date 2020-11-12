@@ -11,7 +11,7 @@ public:
         return res;
     }
     void print(MainWindow* w, const int& x, const int& y)const {
-        root.print(w,x,y-20);
+        root.print(w,x,y, 0);
     }
     int search(std::string lookFor)const { // returns value of given letters or 0 if not found
         return root.search(lookFor);

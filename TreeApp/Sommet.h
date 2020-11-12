@@ -7,7 +7,29 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QLabel>
+#include <QPainter>
 
+class Line : public QWidget
+{
+    int ax,ay,bx,by;
+public:
+    explicit Line(QWidget* parent=nullptr):QWidget(parent){}
+    void set(int ax,int ay,int bx,int by){
+        this->ax = ax;
+        this->ay = ay;
+        this->bx = bx;
+        this->by = by;
+    }
+protected:
+    void paintEvent(QPaintEvent *event)
+    {
+        Q_UNUSED(event);
+        QPainter painter(this);
+        this->setGeometry(0,0,900,900);
+        painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::FlatCap));
+        painter.drawLine(ax, ay, bx, by);
+    }
+};
 
 class Sommet {
     Sommet* left = nullptr;
@@ -57,18 +79,24 @@ public:
             return res;
         }
     }
-    void print(MainWindow* w, int x, int y) const {
+    void print(MainWindow* w, int x, int y, int index) const {
         QLabel* label = new QLabel(w);
         label->setText(letters.c_str());
         label->setGeometry(x,y,7 * letters.length() + 7,15);
         label->setStyleSheet("border: 1px solid black");
         //std::cout << letters << " " << value << std::endl;
-        y+=20;
-        if (left != nullptr)left->print(w,x,y);
-
-        if (right != nullptr){
-            x+=10 + 10 * left->letters.length();
-            right->print(w,x,y);
+        int leftIndex = 2 * index + 1;
+        int rightIndex = 2 * index + 2;
+        if (left != nullptr) left->print(w,x - y / (index + 1), y + 50,leftIndex);
+        if (right != nullptr) right->print(w,x + y / (index + 1), y + 50,rightIndex);
+        // left line
+        if(left != nullptr) {
+            Line* line = new Line(w);
+            line->set(x + (7 * letters.length() + 7)/2, y + 15, x - y / (index + 1)+ (7 * letters.length() + 7)/2, y + 50);
+        } // right line
+        if(right != nullptr) {
+            Line* line = new Line(w);
+            line->set(x + (7 * letters.length() + 7)/2, y + 15, x + y / (index + 1)+ (7 * letters.length() + 7)/2, y + 50);
         }
     }
     int search(std::string lookFor)const {
