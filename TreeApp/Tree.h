@@ -1,6 +1,15 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+
+#include "mainwindow.h"
+#include <QApplication>
+#include <QLabel>
+
+#include <QGraphicsView>
+#include <QTextStream>
+#include <QProcess>
 
 class Sommet {
     Sommet* left = nullptr;
@@ -9,7 +18,7 @@ class Sommet {
     int value;
 public:
     Sommet() = delete;
-    Sommet(std::string letters, int value) :letters(letters), value(value) {}
+    Sommet(std::string letters, int value) : letters(letters), value(value) {}
     Sommet(const Sommet& s) { // copy constructor
         if (s.left != nullptr) left = new Sommet(*s.left);
         if (s.right != nullptr) right = new Sommet(*s.right);
@@ -17,14 +26,16 @@ public:
         letters = s.letters;
     }
     ~Sommet() { // free memory in destructor
-        if (left != nullptr) delete left;
-        if (right != nullptr) delete right;
+        delete left;
+        delete right;
     }
     void setLeft(const Sommet& s) {
+        if(left != nullptr)delete left;
         Sommet* newS = new Sommet(s);
         left = newS;
     }
     void setRight(const Sommet& s) {
+        if(right != nullptr)delete right;
         Sommet* newS = new Sommet(s);
         right = newS;
     }
@@ -48,10 +59,19 @@ public:
             return res;
         }
     }
-    void print() const {
-        std::cout << letters << " " << value << std::endl;
-        if (left != nullptr)left->print();
-        if (right != nullptr)right->print();
+    void print(MainWindow* w, int x, int y) const {
+        QLabel* label = new QLabel(w);
+        label->setText(letters.c_str());
+        label->setGeometry(x,y,10 * letters.length(),10);
+        //std::cout << letters << " " << value << std::endl;
+        y+=20;
+        if (left != nullptr)left->print(w,x,y);
+
+        if (right != nullptr){
+            x+=10 * (left->letters.length() + 1);
+            right->print(w,x,y);
+        }
+
     }
     int search(std::string lookFor)const {
         int res = 0;
@@ -67,13 +87,12 @@ class ArbreB {
 public:
     ArbreB() = delete;
     ArbreB(const Sommet& root) :root(root) {}
-    void setRoot(Sommet root) { this->root = root; }
     const ArbreB operator+(const ArbreB& t) {
         ArbreB res(root + t.root);
         return res;
     }
-    void print() const {
-        root.print();
+    void print(MainWindow* w, const int& x, const int& y)const {
+        root.print(w,x,y-20);
     }
     int search(std::string lookFor)const { // returns value of given letters or 0 if not found
         return root.search(lookFor);
