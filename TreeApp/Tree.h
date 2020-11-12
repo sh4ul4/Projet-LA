@@ -62,13 +62,14 @@ public:
     void print(MainWindow* w, int x, int y) const {
         QLabel* label = new QLabel(w);
         label->setText(letters.c_str());
-        label->setGeometry(x,y,10 * letters.length(),10);
+        label->setGeometry(x,y,7 * letters.length() + 7,15);
+        label->setStyleSheet("border: 1px solid black");
         //std::cout << letters << " " << value << std::endl;
         y+=20;
         if (left != nullptr)left->print(w,x,y);
 
         if (right != nullptr){
-            x+=10 * (left->letters.length() + 1);
+            x+=10 + 10 * left->letters.length();
             right->print(w,x,y);
         }
 
