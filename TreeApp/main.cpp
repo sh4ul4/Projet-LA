@@ -1,11 +1,10 @@
 #include "Tree.h"
 
-
-
 // to add maybe : https://doc.qt.io/qt-5/qtwidgets-itemviews-simpletreemodel-example.html
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     MainWindow w;
+    w.setStyleSheet("background-color: black;");
     Sommet c("C",2);
     Sommet b("B",6);
     Sommet cb = c + b;

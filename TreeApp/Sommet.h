@@ -6,7 +6,19 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QLabel>
+#include <QPushButton>
 #include <QPainter>
+#include <QMessageBox>
+
+template<typename T>
+const T& min(const T& a, const T& b) {
+    return a < b ? a :b;
+}
+
+template<typename T>
+const T& max(const T& a, const T& b) {
+    return a > b ? a :b;
+}
 
 class Line : public QWidget
 {
@@ -24,13 +36,15 @@ protected:
     {
         Q_UNUSED(event);
         QPainter painter(this);
-        this->setGeometry(0,0,900,900);
-        painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::FlatCap));
-        painter.drawLine(ax, ay, bx, by);
+        this->setGeometry(min(ax,bx), min(ay,by), max(ax,bx) - min(ax,bx), max(ay,by) - min(ay,by));
+        painter.setPen(QPen(Qt::white, 4, Qt::SolidLine, Qt::RoundCap));
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.setRenderHint(QPainter::HighQualityAntialiasing, true);
+        painter.drawLine(ax - min(ax,bx) , ay - min(ay,by) , bx - min(ax,bx) , by - min(ay,by));
     }
 };
 
-class Sommet {
+class Sommet{
     Sommet* left = nullptr;
     Sommet* right = nullptr;
     std::string letters;
@@ -78,25 +92,46 @@ public:
             return res;
         }
     }
+    /////////////////////////////////////////////////////////
+    void clickedSlot()const {
+        QMessageBox msg;
+        std::string txt = letters;
+        txt += " ";
+        txt += std::to_string(value);
+        msg.setText(txt.c_str());
+        msg.exec();
+    }
     void print(MainWindow* w, int x, int y, int index) const {
-        QLabel* label = new QLabel(w);
+        // left line
+        if(left != nullptr) {
+            Line* line = new Line(w);
+            line->set(x + (7 * letters.length() + 7)/2, y , x - y / (index + 1)+ (7 * left->letters.length() + 7)/2, y + 54);
+        } // right line
+        if(right != nullptr) {
+            Line* line = new Line(w);
+            line->set(x + (7 * letters.length() + 7)/2, y , x + y / (index + 1)+ (7 * right->letters.length() + 7)/2, y + 54);
+        }
+        // Label
+        /*QLabel* label = new QLabel(w);
         label->setText(letters.c_str());
         label->setGeometry(x,y,7 * letters.length() + 7,15);
-        label->setStyleSheet("border: 1px solid black");
+        label->setStyleSheet("border: 1px solid white; background-color: gray;");
+        label->raise();*/
+        // Button
+        QPushButton* b = new QPushButton(w);
+        b->setText(letters.c_str());
+        b->setGeometry(x,y,7 * letters.length() + 7,15);
+        b->setStyleSheet("border: 1px solid white; background-color: gray;");
+        b->raise();
+        w->connect( b, &QPushButton::clicked, [=](){clickedSlot();} );
+        // Terminal
         //std::cout << letters << " " << value << std::endl;
         int leftIndex = 2 * index + 1;
         int rightIndex = 2 * index + 2;
         if (left != nullptr) left->print(w,x - y / (index + 1), y + 50,leftIndex);
         if (right != nullptr) right->print(w,x + y / (index + 1), y + 50,rightIndex);
-        // left line
-        if(left != nullptr) {
-            Line* line = new Line(w);
-            line->set(x + (7 * letters.length() + 7)/2, y + 15, x - y / (index + 1)+ (7 * letters.length() + 7)/2, y + 50);
-        } // right line
-        if(right != nullptr) {
-            Line* line = new Line(w);
-            line->set(x + (7 * letters.length() + 7)/2, y + 15, x + y / (index + 1)+ (7 * letters.length() + 7)/2, y + 50);
-        }
+
+
     }
     int search(std::string lookFor)const {
         int res = 0;
