@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 
 #include "mainwindow.h"
 #include <QApplication>
