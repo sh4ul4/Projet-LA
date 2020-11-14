@@ -3,7 +3,8 @@
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     MainWindow w;
-    w.setStyleSheet("background-color: black;");
+    w.setObjectName("MAINW");
+    w.setStyleSheet("QWidget#MAINW {background-color: black;}");
     Sommet c("C",2);
     Sommet b("B",6);
     Sommet cb = c + b;
@@ -20,6 +21,7 @@ int main(int argc, char *argv[]) {
 
     std::cout << tree.search("A") << std::endl;
     tree.print(&w,w.width()/2,100);
+    tree.print(&w);
     w.show();
     return app.exec();
 }
