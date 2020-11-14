@@ -20,7 +20,6 @@ int main(int argc, char *argv[]) {
     ArbreB tree(_daecb);
 
     std::cout << tree.search("A") << std::endl;
-    tree.print(&w,w.width()/2,100);
     tree.print(&w);
     w.show();
     return app.exec();
