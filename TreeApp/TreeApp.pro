@@ -9,12 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Sommet.cpp \
+    Tree.cpp \
+    line.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Sommet.h \
     Tree.h \
+    line.h \
     mainwindow.h
 
 FORMS += \

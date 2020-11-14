@@ -1,6 +1,5 @@
 #include "Tree.h"
 
-// to add maybe : https://doc.qt.io/qt-5/qtwidgets-itemviews-simpletreemodel-example.html
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     MainWindow w;
