@@ -41,24 +41,26 @@ Sommet Sommet::operator+(const Sommet& s)const  {
         return res;
     }
 }
-void Sommet::clickedSlot(Panel* panel, const int& x, const int& y)const {
-    /*QMessageBox msg(panel);
-    std::string txt = letters;
-    txt += " ";
-    txt += std::to_string(value);
-    msg.setText(txt.c_str());
-    msg.exec();*/
-    std::string txt = letters;
-    txt += " ";
-    txt += std::to_string(value);
-    QLabel* label = new QLabel(panel);
-    label->setText(txt.c_str());
-    label->setGeometry(x,y + 20,7 * txt.length() + 7,15);
-    label->setStyleSheet("border: 1px solid white; background-color: gray;");
-    label->raise();
-    label->show();
+void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) {
+    if(label == nullptr) {
+        std::string txt = letters;
+        txt += " ";
+        txt += std::to_string(value);
+        delete label;
+        label = new QLabel(panel);
+        label->setText(txt.c_str());
+        label->setGeometry(x,y + 20,7 * txt.length() + 7,15);
+        label->setStyleSheet("border: 1px solid white; background-color: gray;");
+        label->raise();
+        label->show();
+        panel->setSizeX(x+7 * txt.length() + 7); // adapt panel width
+        panel->setSizeY(y+35); // adapt panel height
+    } else {
+        delete label;
+        label = nullptr;
+    }
 }
-void Sommet::print(Panel* panel, const int& x, const int& y, const int& index) const {
+void Sommet::print(Panel* panel, const int& x, const int& y, const int& index) {
     // left line
     if(left != nullptr) {
         Line* const line = new Line(panel);
