@@ -2,5 +2,7 @@
 
 Panel::Panel()
 {
-    this->setFixedSize(2000,2000);
+    sizeX = 0;
+    sizeY = 0;
+    //this->setFixedSize(2000,2000);
 }

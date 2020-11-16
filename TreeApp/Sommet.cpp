@@ -70,20 +70,14 @@ void Sommet::print(Panel* panel, const int& x, const int& y, const int& index) c
         Line* const line = new Line(panel);
         line->set(x + (7 * letters.length() + 7)/2, y , x + y / (index + 1)+ (7 * right->letters.length() + 7)/2, y + 54);
     }
-    // Label
-    /*QLabel* label = new QLabel(w);
-    label->setText(letters.c_str());
-    label->setGeometry(x,y,7 * letters.length() + 7,15);
-    label->setStyleSheet("border: 1px solid white; background-color: gray;");
-    label->raise();*/
     // Button
     QPushButton* const b = new QPushButton(panel);
     b->setText(letters.c_str());
     b->setGeometry(x,y,7 * letters.length() + 7,15);
     b->setStyleSheet("border: 1px solid white; background-color: gray;");
-    //b->raise();
-    //w->p->renderArea->setWidget(b);
     panel->connect( b, &QPushButton::clicked, [=](){clickedSlot(panel,x,y);} );
+    panel->setSizeX(x+7 * letters.length() + 7); // adapt panel width
+    panel->setSizeY(y+15); // adapt panel height
     // Terminal
     //std::cout << letters << " " << value << std::endl;
     // recursivity
