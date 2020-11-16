@@ -9,13 +9,12 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    QVBoxLayout* layout;
-    QWidget* mainWidget;
-    QScrollArea* renderArea;
+    QVBoxLayout* layout = nullptr;
+    QWidget* mainWidget = nullptr;
+    QScrollArea* renderArea = nullptr;
     void treatInput(QLineEdit* l);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private:
 };
 #endif // MAINWINDOW_H

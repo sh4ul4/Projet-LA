@@ -19,3 +19,12 @@ Panel::Panel()
         label->show();
     }*/
 }
+
+void Panel::setSizeX(const int& val){
+    if(val > sizeX)sizeX = val;
+    this->setFixedWidth(sizeX);
+}
+void Panel::setSizeY(const int& val){
+    if(val > sizeY)sizeY = val;
+    this->setFixedHeight(sizeY);
+}

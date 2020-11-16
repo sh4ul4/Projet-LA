@@ -1,7 +1,10 @@
 #pragma once
 #include "Sommet.h"
+#include "mainwindow.h"
 
 class ArbreB {
+public:
+    static ArbreB* globalTree;
     Sommet root;
 public:
     ArbreB() = delete;

@@ -13,14 +13,8 @@ class Panel : public QWidget
     int sizeY;
 
 public:
-    void setSizeX(const int& val){
-        if(val > sizeX)sizeX = val;
-        this->setFixedWidth(sizeX);
-    }
-    void setSizeY(const int& val){
-        if(val > sizeY)sizeY = val;
-        this->setFixedHeight(sizeY);
-    }
+    void setSizeX(const int& val);
+    void setSizeY(const int& val);
 
     Panel();
 };

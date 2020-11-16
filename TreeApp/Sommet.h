@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-#include "mainwindow.h"
 #include "line.h"
 #include "panel.h"
 
@@ -22,11 +21,13 @@ public:
     Sommet(std::string letters, int value);
     Sommet(const Sommet& s); // constructeur de copie
     ~Sommet();
+    void setValue(const int& val);
     void setLeft(const Sommet& s); // redéfinir le Sommet gauche par copie
     void setRight(const Sommet& s); // redéfinir le Sommet droit par copie
     int getValue()const;
     std::string getLetters()const;
     Sommet operator+(const Sommet& s)const; // addition de deux objets Sommet (copie récursive des feuilles) en un nouveau objet Sommet
+    Sommet& operator=(const Sommet& other);
 private:
     void clickedSlot(Panel* panel, const int& x, const int& y); // réaction au clic d'un objet QPushButton
 public:
