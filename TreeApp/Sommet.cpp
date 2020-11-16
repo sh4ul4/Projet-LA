@@ -41,23 +41,33 @@ Sommet Sommet::operator+(const Sommet& s)const  {
         return res;
     }
 }
-void Sommet::clickedSlot()const {
-    QMessageBox msg;
+void Sommet::clickedSlot(Panel* panel, const int& x, const int& y)const {
+    /*QMessageBox msg(panel);
     std::string txt = letters;
     txt += " ";
     txt += std::to_string(value);
     msg.setText(txt.c_str());
-    msg.exec();
+    msg.exec();*/
+    std::string txt = letters;
+    txt += " ";
+    txt += std::to_string(value);
+    QLabel* label = new QLabel(panel);
+    label->setText(txt.c_str());
+    label->setGeometry(x,y + 20,7 * txt.length() + 7,15);
+    label->setStyleSheet("border: 1px solid white; background-color: gray;");
+    label->raise();
+    label->show();
 }
-void Sommet::print(MainWindow* w, const int& x, const int& y, const int& index) const {
+void Sommet::print(Panel* panel, const int& x, const int& y, const int& index) const {
     // left line
     if(left != nullptr) {
-        Line* const line = new Line(w);
+        Line* const line = new Line(panel);
         line->set(x + (7 * letters.length() + 7)/2, y , x - y / (index + 1)+ (7 * left->letters.length() + 7)/2, y + 54);
+        //w->p->renderArea->setWidget(line);
     }
     // right line
     if(right != nullptr) {
-        Line* const line = new Line(w);
+        Line* const line = new Line(panel);
         line->set(x + (7 * letters.length() + 7)/2, y , x + y / (index + 1)+ (7 * right->letters.length() + 7)/2, y + 54);
     }
     // Label
@@ -67,19 +77,20 @@ void Sommet::print(MainWindow* w, const int& x, const int& y, const int& index) 
     label->setStyleSheet("border: 1px solid white; background-color: gray;");
     label->raise();*/
     // Button
-    QPushButton* const b = new QPushButton(w);
+    QPushButton* const b = new QPushButton(panel);
     b->setText(letters.c_str());
     b->setGeometry(x,y,7 * letters.length() + 7,15);
     b->setStyleSheet("border: 1px solid white; background-color: gray;");
-    b->raise();
-    w->connect( b, &QPushButton::clicked, [=](){clickedSlot();} );
+    //b->raise();
+    //w->p->renderArea->setWidget(b);
+    panel->connect( b, &QPushButton::clicked, [=](){clickedSlot(panel,x,y);} );
     // Terminal
     //std::cout << letters << " " << value << std::endl;
     // recursivity
     const int leftIndex = 2 * index + 1;
     const int rightIndex = 2 * index + 2;
-    if (left != nullptr) left->print(w,x - y / (index + 1), y + 50,leftIndex);
-    if (right != nullptr) right->print(w,x + y / (index + 1), y + 50,rightIndex);
+    if (left != nullptr) left->print(panel,x - y / (index + 1), y + 50,leftIndex);
+    if (right != nullptr) right->print(panel,x + y / (index + 1), y + 50,rightIndex);
 }
 int Sommet::search(const std::string lookFor)const {
     int res = 0;

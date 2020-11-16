@@ -13,13 +13,15 @@ SOURCES += \
     Tree.cpp \
     line.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    panel.cpp
 
 HEADERS += \
     Sommet.h \
     Tree.h \
     line.h \
-    mainwindow.h
+    mainwindow.h \
+    panel.h
 
 FORMS += \
     mainwindow.ui

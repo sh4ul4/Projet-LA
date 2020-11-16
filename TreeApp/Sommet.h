@@ -4,6 +4,7 @@
 
 #include "mainwindow.h"
 #include "line.h"
+#include "panel.h"
 
 #include <QApplication>
 #include <QLabel>
@@ -26,8 +27,8 @@ public:
     std::string getLetters()const;
     Sommet operator+(const Sommet& s)const; // addition de deux objets Sommet (copie récursive des feuilles) en un nouveau objet Sommet
 private:
-    void clickedSlot()const; // réaction au clic d'un objet QPushButton
+    void clickedSlot(Panel* panel, const int& x, const int& y)const; // réaction au clic d'un objet QPushButton
 public:
-    void print(MainWindow* w, const int& x, const int& y, const int& index) const; // afficher le Sommet en GUI (récursif)
+    void print(Panel* panel, const int& x, const int& y, const int& index) const; // afficher le Sommet en GUI (récursif)
     int search(const std::string lookFor)const; // renvoyer la valeur du contenu correspondant (récursif)
 };

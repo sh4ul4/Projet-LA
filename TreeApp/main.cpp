@@ -13,14 +13,15 @@ int main(int argc, char *argv[]) {
     Sommet _("_",10);
     Sommet d("D",10);
     Sommet _d = _ + d;
+    d = Sommet("II",2);
     Sommet a("A",11);
     Sommet aecb = ecb + a;
     Sommet _daecb = _d + aecb;
 
     ArbreB tree(_daecb);
-
+    w.show();
     std::cout << tree.search("A") << std::endl;
     tree.print(&w);
-    w.show();
+
     return app.exec();
 }
