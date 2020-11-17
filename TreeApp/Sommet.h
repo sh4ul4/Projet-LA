@@ -11,15 +11,20 @@
 #include <QMessageBox>
 
 class Sommet{
+public:
     Sommet* left = nullptr;
     Sommet* right = nullptr;
+private:
     std::string letters; // contenu du Sommet
     int value; // valeur du contenu
-    QLabel* label = nullptr;
+    // partie graphique
+    std::vector<Line*> lines; // contient les lignes
+    QLabel* label = nullptr; // sert à afficher la valeur
+    QPushButton* b = nullptr; // sert à afficher les lettres
 public:
     Sommet() = delete;
-    Sommet(std::string letters, int value);
-    Sommet(const Sommet& s); // constructeur de copie
+    Sommet(std::string letters, int value);// constructeur basique
+    Sommet(const Sommet& s); // constructeur par copie
     ~Sommet();
     void setValue(const int& val);
     void setLeft(const Sommet& s); // redéfinir le Sommet gauche par copie
@@ -27,7 +32,7 @@ public:
     int getValue()const;
     std::string getLetters()const;
     Sommet operator+(const Sommet& s)const; // addition de deux objets Sommet (copie récursive des feuilles) en un nouveau objet Sommet
-    Sommet& operator=(const Sommet& other);
+    Sommet& operator=(const Sommet& other); // copie
 private:
     void clickedSlot(Panel* panel, const int& x, const int& y); // réaction au clic d'un objet QPushButton
 public:
