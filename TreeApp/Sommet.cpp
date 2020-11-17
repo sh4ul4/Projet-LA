@@ -79,6 +79,12 @@ Sommet Sommet::operator+(const Sommet& s)const // concaténation de deux objets 
         return res;
     }
 }
+bool operator<(const Sommet& a, const Sommet& b) {
+    return a.getValue() < b.getValue();
+}
+bool operator>(const Sommet& a, const Sommet& b) {
+    return a.getValue() > b.getValue();
+}
 void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) // réagir aux clicks des instances QPushButton
 {
     if(label == nullptr) {

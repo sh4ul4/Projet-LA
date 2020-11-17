@@ -33,6 +33,8 @@ public:
     int getValue()const;
     std::string getLetters()const;
     Sommet operator+(const Sommet& s)const; // addition de deux objets Sommet (copie récursive des feuilles) en un nouveau objet Sommet
+    friend bool operator<(const Sommet& a, const Sommet& b); // compare two objects Sommet
+    friend bool operator>(const Sommet& a, const Sommet& b); // compare two objects Sommet
     Sommet& operator=(const Sommet& other); // copie
 private:
     void clickedSlot(Panel* panel, const int& x, const int& y); // réaction au clic d'un objet QPushButton

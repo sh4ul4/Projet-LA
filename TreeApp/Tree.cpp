@@ -47,16 +47,10 @@ void ArbreB::GlobalTree(std::string text) // créer l'arbre gloablTree (variable
         sommets.clear();
         return;
     }
-    // structure pour comparer les sommets pour std::sort
-    struct compareFct {
-        bool operator()(Sommet* a, Sommet* b) {
-            return a->getValue() < b->getValue();
-        }
-    };
     // construire l'arbre
     while(sommets.size() > 1){
         // trier le vecteur d'objets
-        std::sort(sommets.begin(), sommets.end(), compareFct());
+        std::sort(sommets.begin(), sommets.end());
         // créer un nouvel objet Sommet par copie et concaténation
         Sommet tmp = *sommets[0] + *sommets[1];
         // libérer la mémoire inutile au fur et à mesure
@@ -75,6 +69,10 @@ void ArbreB::GlobalTree(std::string text) // créer l'arbre gloablTree (variable
 void ArbreB::print(MainWindow* w) {
     if(root == nullptr)return;
     Panel* panel = new Panel();
+    panel->setObjectName("PANEL");
+    panel->setStyleSheet(QString(
+                         "QWidget#PANEL{"
+                         "background-color: black;}"));
     Sommet::Buttonind = 20;
     root->print(panel,20,20);
     root->printLines(panel);
