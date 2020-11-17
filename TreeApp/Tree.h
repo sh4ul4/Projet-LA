@@ -13,7 +13,6 @@ public:
     ~ArbreB(); // destructeur
     ArbreB & operator = (const ArbreB& t);
     const ArbreB operator+(const ArbreB& t); // addition de deux objet ArbreB et création d'un nouveau Sommet root en fonction des sous-sommets
-    void print(MainWindow* w, const int& x, const int& y); // print the Tree in GUI
     void print(MainWindow* w); // print the Tree in GUI
     int search(std::string lookFor)const; // renvoyer la valeur du contenu correspondant (récursif) ou 0 autrement
 };

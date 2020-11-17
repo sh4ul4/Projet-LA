@@ -19,9 +19,9 @@ void Line::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
     QPainter painter(this);
-    this->setGeometry(min(ax,bx), min(ay,by), max(ax,bx) - min(ax,bx), max(ay,by) - min(ay,by));
-    painter.setPen(QPen(Qt::white, 4, Qt::SolidLine, Qt::RoundCap));
+    this->setGeometry(min(ax,bx) - 4, min(ay,by) - 4, max(ax,bx) - min(ax,bx) + 4, max(ay,by) - min(ay,by) + 4);
+    painter.setPen(QPen(Qt::white, 4, Qt::SolidLine, Qt::FlatCap));
     painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
     painter.setRenderHint(QPainter::HighQualityAntialiasing, true);
-    painter.drawLine(ax - min(ax,bx) , ay - min(ay,by) , bx - min(ax,bx) , by - min(ay,by));
+    painter.drawLine(ax - min(ax,bx) + 2, ay - min(ay,by) + 2, bx - min(ax,bx) + 2, by - min(ay,by) + 2);
 }

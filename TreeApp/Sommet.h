@@ -22,6 +22,7 @@ private:
     QLabel* label = nullptr; // sert à afficher la valeur
     QPushButton* b = nullptr; // sert à afficher les lettres
 public:
+    static int Buttonind;
     Sommet() = delete;
     Sommet(std::string letters, int value);// constructeur basique
     Sommet(const Sommet& s); // constructeur par copie
@@ -36,6 +37,7 @@ public:
 private:
     void clickedSlot(Panel* panel, const int& x, const int& y); // réaction au clic d'un objet QPushButton
 public:
-    void print(Panel* panel, const int& x, const int& y, const int& index); // afficher le Sommet en GUI (récursif)
+    void print(Panel* panel, const int& x, const int& y); // afficher le Sommet en GUI (récursif)
+    void printLines(Panel* panel);
     int search(const std::string lookFor)const; // renvoyer la valeur du contenu correspondant (récursif)
 };

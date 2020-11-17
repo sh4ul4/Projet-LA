@@ -62,7 +62,7 @@ Sommet Sommet::operator+(const Sommet& s)const // concaténation de deux objets 
         exit(1);
     }
     // la valeur la plus petite doit être à droite
-    if (this->value < s.getValue()) {
+    if (this->value > s.getValue()) {
         // création du Sommet base
         Sommet res(this->letters + s.getLetters(), this->value + s.getValue());
         // lancer les copies récursives
@@ -99,20 +99,24 @@ void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) // réagir au
         label = nullptr;
     }
 }
-void Sommet::print(Panel* panel, const int& x, const int& y, const int& index) {
+void Sommet::printLines(Panel* panel) {
     // lines needs to be cleared before recursive call
     for(Line* l : lines)delete l;
     lines.clear();
-    // left line
-    if(left != nullptr) {
+    // print left line
+    if(left != nullptr && b != nullptr && left->b != nullptr) {
         lines.push_back(new Line(panel));
-        lines[lines.size() - 1]->set(x + (7 * letters.length() + 7)/2, y , x - y / (index + 1)+ (7 * left->letters.length() + 7)/2, y + 54);
+        lines[lines.size() - 1]->set(b->x() + b->width() + 1, b->y() + b->height()/2 , left->b->x() + 2, left->b->y() + left->b->height()/2);
+        left->printLines(panel);
     }
-    // right line
-    if(right != nullptr) {
+    // print right line
+    if(right != nullptr && b != nullptr && right->b != nullptr) {
         lines.push_back(new Line(panel));
-        lines[lines.size() - 1]->set(x + (7 * letters.length() + 7)/2, y , x + y / (index + 1)+ (7 * right->letters.length() + 7)/2, y + 54);
+        lines[lines.size() - 1]->set(b->x() + b->width()/2, b->y() + b->height() + 2 , right->b->x() + right->b->width()/2, right->b->y() + 2);
+        right->printLines(panel);
     }
+}
+void Sommet::print(Panel* panel, const int& x, const int& y) {
     // Button
     delete b;
     b = new QPushButton(panel);
@@ -122,14 +126,19 @@ void Sommet::print(Panel* panel, const int& x, const int& y, const int& index) {
     panel->connect( b, &QPushButton::clicked, [=](){clickedSlot(panel,x,y);} );
     panel->setSizeX(x+7 * letters.length() + 7); // adapt panel width
     panel->setSizeY(y+15); // adapt panel height
-
+    // recursivité
+    // print gauche
+    if (left != nullptr){
+        left->print(panel,x + 20  + letters.length() * 7, y);
+    }
+    // incrementation de variable Buttonid
+    Sommet::Buttonind += 20;
+    // print droit
+    if (right != nullptr) {
+        right->print(panel,x, Sommet::Buttonind);
+    }
     // Terminal
     //std::cout << letters << " " << value << std::endl;
-    // recursivité
-    const int leftIndex = 2 * index + 1;
-    const int rightIndex = 2 * index + 2;
-    if (left != nullptr) left->print(panel,x - y / (index + 1), y + 50,leftIndex);
-    if (right != nullptr) right->print(panel,x + y / (index + 1), y + 50,rightIndex);
 }
 int Sommet::search(const std::string lookFor)const // renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
 {

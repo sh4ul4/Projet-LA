@@ -72,16 +72,12 @@ void ArbreB::GlobalTree(std::string text) // créer l'arbre gloablTree (variable
     delete sommets[0];
     sommets.clear();
 }
-void ArbreB::print(MainWindow* w, const int& x, const int& y) {
-    if(root == nullptr)return;
-    Panel* panel = new Panel();
-    root->print(panel,x - root->getLetters().size() * 7 / 2,y, 0);
-    w->renderArea->setWidget(panel);
-}
 void ArbreB::print(MainWindow* w) {
     if(root == nullptr)return;
     Panel* panel = new Panel();
-    root->print(panel,w->renderArea->width()/2 - root->getLetters().size() * 7 / 2,75, 0);
+    Sommet::Buttonind = 20;
+    root->print(panel,20,20);
+    root->printLines(panel);
     w->renderArea->setWidget(panel);
 }
 int ArbreB::search(std::string lookFor)const {
