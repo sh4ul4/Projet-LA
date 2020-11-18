@@ -19,7 +19,6 @@ void Line::set(const int& ax,const int& ay,const int& bx,const int& by){
 }
 void Line::paintEvent(QPaintEvent *event)
 {
-    if(ax == ay == bx == by == 0)return;
     Q_UNUSED(event);
     QPainter painter(this);
     this->setGeometry(min(ax,bx) - 4, min(ay,by) - 4, max(ax,bx) - min(ax,bx) + 4, max(ay,by) - min(ay,by) + 4);
