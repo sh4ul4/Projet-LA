@@ -94,12 +94,13 @@ void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) // réagir au
         delete label;
         label = new QLabel(panel);
         label->setText(txt.c_str());
-        label->setGeometry(x,y + 20,7 * txt.length() + 7,15);
+        label->setGeometry(x,y + 20,9 * txt.length() + (int)(value/10 + 1) * 9,15);
         label->setStyleSheet("border: 1px solid white; background-color: gray;");
         label->raise();
         label->show();
-        panel->setSizeX(x+7 * txt.length() + 7); // adapt panel width
-        panel->setSizeY(y+35); // adapt panel height
+        label->adjustSize();
+        //panel->setSizeX(x+7 * txt.length() + (int)(value/10 + 1) * 9); // adapt panel width
+        //panel->setSizeY(y+35); // adapt panel height
     } else {
         delete label;
         label = nullptr;
@@ -112,13 +113,11 @@ void Sommet::printLines(Panel* panel) {
     // print left line
     if(left != nullptr && b != nullptr && left->b != nullptr) {
         lines.push_back(new Line(panel,b->x() + b->width() + 1, b->y() + b->height()/2 , left->b->x() + 2, left->b->y() + left->b->height()/2));
-        //lines[lines.size() - 1]->set(b->x() + b->width() + 1, b->y() + b->height()/2 , left->b->x() + 2, left->b->y() + left->b->height()/2);
         left->printLines(panel);
     }
     // print right line
     if(right != nullptr && b != nullptr && right->b != nullptr) {
         lines.push_back(new Line(panel,b->x() + b->width()/2, b->y() + b->height() + 2 , right->b->x() + right->b->width()/2, right->b->y() + 2));
-        //lines[lines.size() - 1]->set(b->x() + b->width()/2, b->y() + b->height() + 2 , right->b->x() + right->b->width()/2, right->b->y() + 2);
         right->printLines(panel);
     }
 }
@@ -127,15 +126,16 @@ void Sommet::print(Panel* panel, const int& x, const int& y) {
     delete b;
     b = new QPushButton(panel);
     b->setText(letters.c_str());
-    b->setGeometry(x,y,7 * letters.length() + 7,15);
+    b->setGeometry(x,y,9 * letters.length() ,20);
     b->setStyleSheet("border: 1px solid white; background-color: gray;");
     panel->connect( b, &QPushButton::clicked, [=](){clickedSlot(panel,x,y);} );
-    panel->setSizeX(x+7 * letters.length() + 7); // adapt panel width
-    panel->setSizeY(y+15); // adapt panel height
+    //panel->setSizeX(x+9 * letters.length() ); // adapt panel width
+    //panel->setSizeY(y+20); // adapt panel height
+    panel->adjustSize();
     // recursivité
     // print gauche
     if (left != nullptr){
-        left->print(panel,x + 20  + letters.length() * 7, y);
+        left->print(panel,x + 20  + letters.length() * 9, y);
     }
     // incrementation de variable Buttonid
     Sommet::Buttonind += 20;
