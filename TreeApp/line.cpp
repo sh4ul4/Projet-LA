@@ -9,6 +9,8 @@ template<typename T>
 const T& max(const T& a, const T& b) {
     return a > b ? a :b;
 }
+
+Line::Line(QWidget* parent, int ax, int ay, int bx, int by):QWidget(parent),ax(ax),ay(ay),bx(bx),by(by){}
 void Line::set(const int& ax,const int& ay,const int& bx,const int& by){
     this->ax = ax;
     this->ay = ay;

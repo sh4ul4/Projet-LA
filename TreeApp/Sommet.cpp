@@ -111,14 +111,14 @@ void Sommet::printLines(Panel* panel) {
     lines.clear();
     // print left line
     if(left != nullptr && b != nullptr && left->b != nullptr) {
-        lines.push_back(new Line(panel));
-        lines[lines.size() - 1]->set(b->x() + b->width() + 1, b->y() + b->height()/2 , left->b->x() + 2, left->b->y() + left->b->height()/2);
+        lines.push_back(new Line(panel,b->x() + b->width() + 1, b->y() + b->height()/2 , left->b->x() + 2, left->b->y() + left->b->height()/2));
+        //lines[lines.size() - 1]->set(b->x() + b->width() + 1, b->y() + b->height()/2 , left->b->x() + 2, left->b->y() + left->b->height()/2);
         left->printLines(panel);
     }
     // print right line
     if(right != nullptr && b != nullptr && right->b != nullptr) {
-        lines.push_back(new Line(panel));
-        lines[lines.size() - 1]->set(b->x() + b->width()/2, b->y() + b->height() + 2 , right->b->x() + right->b->width()/2, right->b->y() + 2);
+        lines.push_back(new Line(panel,b->x() + b->width()/2, b->y() + b->height() + 2 , right->b->x() + right->b->width()/2, right->b->y() + 2));
+        //lines[lines.size() - 1]->set(b->x() + b->width()/2, b->y() + b->height() + 2 , right->b->x() + right->b->width()/2, right->b->y() + 2);
         right->printLines(panel);
     }
 }
