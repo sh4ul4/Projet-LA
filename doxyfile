@@ -1,0 +1,10 @@
+PROJECT_NAME = "TreeApp"
+PROJECT_BRIEF = "TreeApp description"
+
+OUTPUT_DIRECTORY = "doxygen"
+INPUT = TreeApp
+RECURSIVE = YES
+
+OUTPUT_LANGUAGE = French
+GENERATE_LATEX = YES
+LATEX_OUTPUT = latex

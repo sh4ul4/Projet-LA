@@ -1,6 +1,7 @@
 #include "Tree.h"
 
-ArbreB::ArbreB(const Sommet& root) {
+ArbreB::ArbreB(const Sommet& root)
+{
     // création de la base du root par copie des valeurs
     this->root = new Sommet(root.getLetters(),root.getValue());
     // copie récursive des valeurs
@@ -26,7 +27,7 @@ int contains(const std::vector<Sommet*>& vec,const std::string& c)
     } return -1;
 }
 
-void ArbreB::GlobalTree(std::string text) // créer l'arbre gloablTree (variable statique)
+void ArbreB::GlobalTree(std::string text) /// créer l'arbre globalTree (variable statique)
 {
     std::vector<Sommet*>sommets; // vecteur des sommets feuilles
     // ajout des objets Sommet (une lettre par sommet)
@@ -66,7 +67,8 @@ void ArbreB::GlobalTree(std::string text) // créer l'arbre gloablTree (variable
     delete sommets[0];
     sommets.clear();
 }
-void ArbreB::print(MainWindow* w) {
+void ArbreB::print(MainWindow* w) /// afficher l'arbre dans la GUI
+{
     if(root == nullptr)return;
     Panel* panel = new Panel();
     panel->setObjectName("PANEL");
@@ -78,7 +80,8 @@ void ArbreB::print(MainWindow* w) {
     root->printLines(panel);
     w->renderArea->setWidget(panel);
 }
-int ArbreB::search(std::string lookFor)const {
+int ArbreB::search(std::string lookFor)const /// renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
+{
     if(root == nullptr)return 0;
     return root->search(lookFor);
 }

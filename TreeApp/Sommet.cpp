@@ -1,7 +1,7 @@
 #include "Sommet.h"
 
 Sommet::Sommet(std::string letters, int value) : letters(letters), value(value) {}
-Sommet::Sommet(const Sommet& s) { // copie du Sommet
+Sommet::Sommet(const Sommet& s) { /// copie du Sommet
     if (s.left != nullptr){ // copier la nouvelle valeur pour left
         delete left;
         left = new Sommet(*s.left);
@@ -14,7 +14,7 @@ Sommet::Sommet(const Sommet& s) { // copie du Sommet
     value = s.value;
     letters = s.letters;
 }
-Sommet::~Sommet() // libérer les variables allouées dynamiquement et leur donner une valeur neutre
+Sommet::~Sommet() /// libérer les variables allouées dynamiquement et leur donner une valeur neutre
 {
     for(Line* l : lines)delete l;
     lines.clear();
@@ -50,7 +50,7 @@ void Sommet::setRight(const Sommet& s) {
 }
 int Sommet::getValue()const { return value; }
 std::string Sommet::getLetters()const { return letters; }
-Sommet Sommet::operator+(const Sommet& s)const // concaténation de deux objets Sommet en créant un nouveau Sommet base
+Sommet Sommet::operator+(const Sommet& s)const /// concaténation de deux objets Sommet en créant un nouveau Sommet base
 {
     // gérer les cas erreur
     if (left != nullptr&&left->search(s.letters) > 0) {
@@ -85,7 +85,7 @@ bool operator<(const Sommet& a, const Sommet& b) {
 bool operator>(const Sommet& a, const Sommet& b) {
     return a.getValue() > b.getValue();
 }
-void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) // réagir aux clicks des instances QPushButton
+void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) /// réagir aux clicks des instances QPushButton
 {
     if(label == nullptr) {
         std::string txt = letters;
@@ -106,7 +106,8 @@ void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) // réagir au
         label = nullptr;
     }
 }
-void Sommet::printLines(Panel* panel) {
+void Sommet::printLines(Panel* panel) /// afficher les lignes correspondantes aux objets Sommet dans la GUI
+{
     // lines needs to be cleared before recursive call
     for(Line* l : lines)delete l;
     lines.clear();
@@ -121,7 +122,8 @@ void Sommet::printLines(Panel* panel) {
         right->printLines(panel);
     }
 }
-void Sommet::print(Panel* panel, const int& x, const int& y) {
+void Sommet::print(Panel* panel, const int& x, const int& y) /// afficher les valeurs des objets Sommet dans la GUI
+{
     // Button
     delete b;
     b = new QPushButton(panel);
@@ -146,7 +148,7 @@ void Sommet::print(Panel* panel, const int& x, const int& y) {
     // Terminal
     //std::cout << letters << " " << value << std::endl;
 }
-int Sommet::search(const std::string lookFor)const // renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
+int Sommet::search(const std::string lookFor)const /// renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
 {
     int res = 0;
     if (letters == lookFor) res = value;

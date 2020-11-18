@@ -1,17 +1,20 @@
 #include "line.h"
 
 template<typename T>
-const T& min(const T& a, const T& b) {
+const T& min(const T& a, const T& b) /// fonction générique pour renvoyer le minimum
+{
     return a < b ? a :b;
 }
 
 template<typename T>
-const T& max(const T& a, const T& b) {
+const T& max(const T& a, const T& b) /// fonction générique pour renvoyer le maximum
+{
     return a > b ? a :b;
 }
 
 Line::Line(QWidget* parent, int ax, int ay, int bx, int by):QWidget(parent),ax(ax),ay(ay),bx(bx),by(by){}
-void Line::set(const int& ax,const int& ay,const int& bx,const int& by){
+void Line::set(const int& ax,const int& ay,const int& bx,const int& by) /// définir la position des Points de la ligne
+{
     this->ax = ax;
     this->ay = ay;
     this->bx = bx;

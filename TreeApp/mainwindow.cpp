@@ -5,7 +5,8 @@
 #include <iostream>
 #include "Tree.h"
 
-void MainWindow::treatInput(QLineEdit* l) {
+void MainWindow::treatInput(QLineEdit* l) /// construire un ArbreB avec le texte de la GUI en entrée
+{
     // récupérer les lettres en entrée
     std::string text = l->text().toStdString();
     // construire la variable statique globalTree
