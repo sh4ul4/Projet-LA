@@ -38,8 +38,9 @@ public:
     Sommet& operator=(const Sommet& other); // copie
 private:
     void clickedSlot(Panel* panel, const int& x, const int& y); // réaction au clic d'un objet QPushButton
+    void printValues(Panel* panel, const int& x, const int& y); // afficher le Sommet en GUI (récursif)
+    void printLines(Panel* panel); // affichage complet récursif
 public:
-    void print(Panel* panel, const int& x, const int& y); // afficher le Sommet en GUI (récursif)
-    void printLines(Panel* panel);
+	void print(Panel* panel, const int& x, const int& y);
     int search(const std::string lookFor)const; // renvoyer la valeur du contenu correspondant (récursif)
 };

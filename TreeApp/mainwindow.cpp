@@ -9,10 +9,10 @@ void MainWindow::treatInput(QLineEdit* l) /// construire un ArbreB avec le texte
 {
     // récupérer les lettres en entrée
     std::string text = l->text().toStdString();
-    // construire la variable statique globalTree
-    ArbreB::GlobalTree(text);
+    // construire une instance d'arbre pour l'affichage
+    ArbreB::createPrintInstance(text);
     // afficher l'arbre
-    if(ArbreB::globalTree != nullptr)ArbreB::globalTree->print(this);
+    if(ArbreB::printInstance != nullptr)ArbreB::printInstance->print(this);
 }
 
 MainWindow::MainWindow(QWidget *parent)
@@ -128,7 +128,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete ArbreB::globalTree;
+    delete ArbreB::printInstance;
     delete layout;
     delete mainWidget;
 }

@@ -99,8 +99,6 @@ void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) /// réagir a
         label->raise();
         label->show();
         label->adjustSize();
-        //panel->setSizeX(x+7 * txt.length() + (int)(value/10 + 1) * 9); // adapt panel width
-        //panel->setSizeY(y+35); // adapt panel height
     } else {
         delete label;
         label = nullptr;
@@ -122,7 +120,7 @@ void Sommet::printLines(Panel* panel) /// afficher les lignes correspondantes au
         right->printLines(panel);
     }
 }
-void Sommet::print(Panel* panel, const int& x, const int& y) /// afficher les valeurs des objets Sommet dans la GUI
+void Sommet::printValues(Panel* panel, const int& x, const int& y) /// afficher les valeurs des objets Sommet dans la GUI
 {
     // Button
     delete b;
@@ -131,8 +129,6 @@ void Sommet::print(Panel* panel, const int& x, const int& y) /// afficher les va
     b->setGeometry(x,y,9 * letters.length() ,20);
     b->setStyleSheet("border: 1px solid white; background-color: gray;");
     panel->connect( b, &QPushButton::clicked, [=](){clickedSlot(panel,x,y);} );
-    //panel->setSizeX(x+9 * letters.length() ); // adapt panel width
-    //panel->setSizeY(y+20); // adapt panel height
     panel->adjustSize();
     // recursivité
     // print gauche
@@ -148,6 +144,12 @@ void Sommet::print(Panel* panel, const int& x, const int& y) /// afficher les va
     // Terminal
     //std::cout << letters << " " << value << std::endl;
 }
+void Sommet::print(Panel* panel, const int& x, const int& y) /// affichage complet récursif dans la GUI
+{
+	if(panel == nullptr)return;
+	printValues(panel,x,y); // afficher les valeurs des sommets récursivement
+	printLines(panel); // afficher les lignes entre les sommets récursivement
+}
 int Sommet::search(const std::string lookFor)const /// renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
 {
     int res = 0;
@@ -157,3 +159,4 @@ int Sommet::search(const std::string lookFor)const /// renvoie 0 si la valeur n'
     return res;
 }
 
+int Sommet::Buttonind = 0; /// variable globale pour gérer l'affichage des objets Sommet

@@ -19,15 +19,14 @@ ArbreB::~ArbreB() // destructeur
     root = nullptr;
 }
 
-// renvoie -1 si le string ne se trouve pas dans le vecteur, l'indice autrement
-int contains(const std::vector<Sommet*>& vec,const std::string& c)
+int contains(const std::vector<Sommet*>& vec,const std::string& c) /// renvoie -1 si le string ne se trouve pas dans le vecteur, l'indice autrement
 {
     for(int i = 0; i < (int)vec.size(); i++){
         if(vec[i]->getLetters() == c)return i;
     } return -1;
 }
 
-void ArbreB::GlobalTree(std::string text) /// créer l'arbre globalTree (variable statique)
+void ArbreB::createPrintInstance(std::string text) /// créer une instance statique d'arbre pour l'affichage
 {
     std::vector<Sommet*>sommets; // vecteur des sommets feuilles
     // ajout des objets Sommet (une lettre par sommet)
@@ -39,9 +38,9 @@ void ArbreB::GlobalTree(std::string text) /// créer l'arbre globalTree (variabl
             sommets.push_back(tmp);
         }
     }
-    // libérer la mémoire de l'ancien globalTree
-    delete ArbreB::globalTree;
-    ArbreB::globalTree = nullptr;
+    // libérer la mémoire de la variable printInstance
+    delete ArbreB::printInstance;
+    ArbreB::printInstance = nullptr;
     // early exit si il n'y a pas de sommets
     if(sommets.size() == 0){
         for(Sommet* s : sommets)delete s;
@@ -62,7 +61,7 @@ void ArbreB::GlobalTree(std::string text) /// créer l'arbre globalTree (variabl
         // ajouter le nouveau objet Sommet créé
         sommets.push_back(new Sommet(tmp));
     }
-    ArbreB::globalTree = new ArbreB(*sommets[0]); // créer le nouvel objet ArbreB par copie
+    ArbreB::printInstance = new ArbreB(*sommets[0]); // créer le nouvel objet ArbreB par copie
     // libérer la mémoire restante
     delete sommets[0];
     sommets.clear();
@@ -77,7 +76,6 @@ void ArbreB::print(MainWindow* w) /// afficher l'arbre dans la GUI
                          "background-color: black;}"));
     Sommet::Buttonind = 20;
     root->print(panel,20,20);
-    root->printLines(panel);
     w->renderArea->setWidget(panel);
 }
 int ArbreB::search(std::string lookFor)const /// renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
@@ -85,3 +83,5 @@ int ArbreB::search(std::string lookFor)const /// renvoie 0 si la valeur n'est pa
     if(root == nullptr)return 0;
     return root->search(lookFor);
 }
+
+ArbreB* ArbreB::printInstance = nullptr; /// variable statique qui pointe vers l'arbre à afficher
