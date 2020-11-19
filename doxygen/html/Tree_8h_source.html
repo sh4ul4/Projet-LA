@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TreeApp:  Fichier source de TreeApp/Tree.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">TreeApp
+   </div>
+   <div id="projectbrief">TreeApp description</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b934ba2e95e90801899e0340cd237acd.html">TreeApp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Tree.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;Sommet.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;mainwindow.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classArbreB.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classArbreB.html">ArbreB</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">static</span> <a class="code" href="classArbreB.html">ArbreB</a>* printInstance; <span class="comment">// variable statique qui pointe vers l&#39;arbre à afficher</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classSommet.html">Sommet</a>* root;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classArbreB.html">ArbreB</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classArbreB.html">ArbreB</a>(<span class="keyword">const</span> <a class="code" href="classSommet.html">Sommet</a>&amp; root); <span class="comment">// obligation de créer un objet ArbreB avec un Sommet root prédéfini</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classArbreB.html#a9b96dad3026107a9719f97416ced4fbd">createPrintInstance</a>(std::string text); <span class="comment">// créer une instance statique d&#39;arbre pour l&#39;affichage</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ~<a class="code" href="classArbreB.html">ArbreB</a>(); <span class="comment">// destructeur</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classArbreB.html">ArbreB</a> &amp; operator = (<span class="keyword">const</span> <a class="code" href="classArbreB.html">ArbreB</a>&amp; t);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">const</span> <a class="code" href="classArbreB.html">ArbreB</a> operator+(<span class="keyword">const</span> <a class="code" href="classArbreB.html">ArbreB</a>&amp; t); <span class="comment">// addition de deux objet ArbreB et création d&#39;un nouveau Sommet root en fonction des sous-sommets</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classArbreB.html#a5d459a99af6288d9a2e723dc6e138cc8">print</a>(<a class="code" href="classMainWindow.html">MainWindow</a>* w); <span class="comment">// print the Tree in GUI</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classArbreB.html#a936256b38a3de6cdf8f29c2dee66c9ce">search</a>(std::string lookFor)<span class="keyword">const</span>; <span class="comment">// renvoyer la valeur du contenu correspondant (récursif) ou 0 autrement</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassArbreB_html"><div class="ttname"><a href="classArbreB.html">ArbreB</a></div><div class="ttdef"><b>Definition:</b> Tree.h:5</div></div>
+<div class="ttc" id="aclassArbreB_html_a9b96dad3026107a9719f97416ced4fbd"><div class="ttname"><a href="classArbreB.html#a9b96dad3026107a9719f97416ced4fbd">ArbreB::createPrintInstance</a></div><div class="ttdeci">static void createPrintInstance(std::string text)</div><div class="ttdoc">créer une instance statique d'arbre pour l'affichage</div><div class="ttdef"><b>Definition:</b> Tree.cpp:29</div></div>
+<div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdef"><b>Definition:</b> mainwindow.h:9</div></div>
+<div class="ttc" id="aclassArbreB_html_a5d459a99af6288d9a2e723dc6e138cc8"><div class="ttname"><a href="classArbreB.html#a5d459a99af6288d9a2e723dc6e138cc8">ArbreB::print</a></div><div class="ttdeci">void print(MainWindow *w)</div><div class="ttdoc">afficher l'arbre dans la GUI</div><div class="ttdef"><b>Definition:</b> Tree.cpp:69</div></div>
+<div class="ttc" id="aclassArbreB_html_a936256b38a3de6cdf8f29c2dee66c9ce"><div class="ttname"><a href="classArbreB.html#a936256b38a3de6cdf8f29c2dee66c9ce">ArbreB::search</a></div><div class="ttdeci">int search(std::string lookFor) const</div><div class="ttdoc">renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante</div><div class="ttdef"><b>Definition:</b> Tree.cpp:81</div></div>
+<div class="ttc" id="aclassSommet_html"><div class="ttname"><a href="classSommet.html">Sommet</a></div><div class="ttdef"><b>Definition:</b> Sommet.h:13</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>
