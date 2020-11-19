@@ -34,4 +34,5 @@ Pour générer cette Documentation il suffit d'entrer à la base du projet :
 ```bash
 make documentation
 ```
-La documentation se trouve dans le fichier [doxygen](/doxygen).
+La documentation se trouve dans le fichier [doxygen](/doxygen).  
+Si toutefois l'utilisateur n'arrive pas à lancer l'éxecutable, des images exemples se trouvent dans [example result](example\ result/).
