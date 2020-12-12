@@ -24,6 +24,7 @@ void Line::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
     QPainter painter(this);
+    //painter.setBackgroundMode(Qt::TransparentMode);
     this->setGeometry(min(ax,bx) - 4, min(ay,by) - 4, max(ax,bx) - min(ax,bx) + 4, max(ay,by) - min(ay,by) + 4);
     painter.setPen(QPen(Qt::white, 4, Qt::SolidLine, Qt::FlatCap));
     painter.setRenderHint(QPainter::SmoothPixmapTransform, true);

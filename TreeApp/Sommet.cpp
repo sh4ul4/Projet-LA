@@ -61,16 +61,8 @@ Sommet Sommet::operator+(const Sommet& s)const /// concaténation de deux objets
         std::cout << "letters already exist in subSommet" << std::endl;
         exit(1);
     }
-    // la valeur la plus petite doit être à droite
+    // la valeur la plus petite doit être à gauche
     if (this->value > s.getValue()) {
-        // création du Sommet base
-        Sommet res(this->letters + s.getLetters(), this->value + s.getValue());
-        // lancer les copies récursives
-        res.setLeft(*this);
-        res.setRight(s);
-        return res;
-    }
-    else {
         // création du Sommet base
         Sommet res(s.getLetters() + this->letters, this->value + s.getValue());
         // lancer les copies récursives
@@ -78,12 +70,20 @@ Sommet Sommet::operator+(const Sommet& s)const /// concaténation de deux objets
         res.setRight(*this);
         return res;
     }
+    else {
+        // création du Sommet base
+        Sommet res(this->letters + s.getLetters(), this->value + s.getValue());
+        // lancer les copies récursives
+        res.setLeft(*this);
+        res.setRight(s);
+        return res;
+    }
 }
-bool operator<(const Sommet& a, const Sommet& b) {
-    return a.getValue() < b.getValue();
+bool Sommet::operator<(const Sommet& s)const {
+    return (this->getValue()) < (s.getValue());
 }
-bool operator>(const Sommet& a, const Sommet& b) {
-    return a.getValue() > b.getValue();
+bool Sommet::operator>(const Sommet& s)const {
+    return (this->getValue()) > (s.getValue());
 }
 void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) /// réagir aux clicks des instances QPushButton
 {
@@ -146,9 +146,9 @@ void Sommet::printValues(Panel* panel, const int& x, const int& y) /// afficher 
 }
 void Sommet::print(Panel* panel, const int& x, const int& y) /// affichage complet récursif dans la GUI
 {
-	if(panel == nullptr)return;
-	printValues(panel,x,y); // afficher les valeurs des sommets récursivement
-	printLines(panel); // afficher les lignes entre les sommets récursivement
+    if(panel == nullptr)return;
+    printValues(panel,x,y); // afficher les valeurs des sommets récursivement
+    printLines(panel); // afficher les lignes entre les sommets récursivement
 }
 int Sommet::search(const std::string lookFor)const /// renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
 {
@@ -156,6 +156,25 @@ int Sommet::search(const std::string lookFor)const /// renvoie 0 si la valeur n'
     if (letters == lookFor) res = value;
     if (left != nullptr) res += left->search(lookFor);
     if (right != nullptr) res += right->search(lookFor);
+    return res;
+}
+std::string Sommet::getBinary(const char c)const /// renvoie le code binaire du caractère c
+{
+    std::string res = "";
+    std::string lLetters;
+    std::string rLetters;
+    if(left != nullptr) lLetters = left->getLetters();
+    if(right != nullptr) rLetters = right->getLetters();
+    // la lettre est dans l'un des fils
+    if (lLetters == std::string(1,c)) return "0";
+    if (rLetters == std::string(1,c)) return "1";
+    // la lettre n'est pas dans l'un des fils
+    if (left != nullptr && std::find(lLetters.begin(), lLetters.end(), c) != lLetters.end()) {
+        return "0" + left->getBinary(c);
+    }
+    if (right != nullptr && std::find(rLetters.begin(), rLetters.end(), c) != rLetters.end()) {
+        return "1" + right->getBinary(c);
+    }
     return res;
 }
 

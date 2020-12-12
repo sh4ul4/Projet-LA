@@ -15,4 +15,5 @@ public:
     const ArbreB operator+(const ArbreB& t); // addition de deux objet ArbreB et création d'un nouveau Sommet root en fonction des sous-sommets
     void print(MainWindow* w); // print the Tree in GUI
     int search(std::string lookFor)const; // renvoyer la valeur du contenu correspondant (récursif) ou 0 autrement
+    std::string codeText(const std::string text); // renvoit le texte entré en texte binaire codé selon le code de huffman de l'arbre. Renvoit "Error" si le texte n'est pas codé selon le même langage.
 };

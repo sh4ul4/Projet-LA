@@ -3,16 +3,18 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QTextEdit>
 #include "panel.h"
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    QVBoxLayout* layout = nullptr;
+    QGridLayout* layout = nullptr;
     QWidget* mainWidget = nullptr;
     QScrollArea* renderArea = nullptr;
-    void treatInput(QLineEdit* l);
+    void treatInputTree(QLineEdit* input);
+    void treatInputBinary(QLineEdit* input, QTextEdit* output);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
