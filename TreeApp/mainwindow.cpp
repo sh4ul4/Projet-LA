@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     mainWidget = new QWidget(this);
     mainWidget->setObjectName("MAINWIDGET");
-    mainWidget->setStyleSheet("QWidget#MAINWIDGET {background-color: #1b2d5e;}");
+    mainWidget->setStyleSheet("QWidget#MAINWIDGET {background-color: #00111f;}");//#002b4a;}");//#1b2d5e
     setCentralWidget(mainWidget);
 
     layout = new QGridLayout();
@@ -48,20 +48,17 @@ MainWindow::MainWindow(QWidget *parent)
     renderArea->setObjectName("RENDERAREA");
     renderArea->setStyleSheet(QString(
                                   "QWidget#RENDERAREA {"
-                                  "background-color: #145573;"
-                                  " border-style: outset;"
-                                  " border-width: 2px;"
-                                  " border-radius: 10px;"
-                                  " border-color: gray;"
+                                  "background-color: #121e26;"//#145573;"
                                   " font: bold 14px;"
                                   " min-width: 10em;"
+                                  " border-radius: 3px;"
                                   " padding: 6px;} "
                                   "QScrollBar:horizontal {"
                                        "height: 15px;"
                                        "margin: 3px 15px 3px 15px;"
                                        "border: 1px transparent #2A2929;"
                                        "border-radius: 4px;"
-                                       "background-color: #2A2929; }"
+                                       "background-color: transparent; }"
                                    "QScrollBar::handle:horizontal {"
                                        "background-color: gray;"
                                        "min-width: 5px;"
@@ -88,12 +85,10 @@ MainWindow::MainWindow(QWidget *parent)
                                        "width: 10px;"
                                        "subcontrol-position: left;"
                                        "subcontrol-origin: margin; }"
-                                   "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {"
-                                       "background: none; }"
                                    "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {"
                                        "background: none; }"
                                    "QScrollBar:vertical {"
-                                       "background-color: #2A2929;"
+                                       "background-color: transparent;"
                                        "width: 15px;"
                                        "margin: 15px 3px 15px 3px;"
                                        "border: 1px transparent #2A2929;"
@@ -133,7 +128,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QLineEdit* textInput = new QLineEdit();
     textInput->setObjectName("TEXTINPUT");
-    textInput->setStyleSheet("QWidget#TEXTINPUT {color: #145573; background-color: beige;}");
+    textInput->setStyleSheet("QWidget#TEXTINPUT {color: beige; background-color: #121e26;}");
 
     QTextEdit* textOutput = new QTextEdit();
     textOutput->setStyleSheet("background : white");
@@ -142,20 +137,17 @@ MainWindow::MainWindow(QWidget *parent)
     textOutput->setObjectName("TEXTOUTPUT");
     textOutput->setStyleSheet(QString(
                                   "QWidget#TEXTOUTPUT {"
-                                  "background-color: #145573;"
-                                  " border-style: outset;"
-                                  " border-width: 2px;"
-                                  " border-radius: 10px;"
-                                  " border-color: gray;"
+                                  "background-color: #121e26;"//#145573;"
                                   " font: bold 14px;"
                                   " min-width: 10em;"
+                                  " border-radius: 3px;"
                                   " padding: 6px;} "
                                   "QScrollBar:horizontal {"
                                        "height: 15px;"
                                        "margin: 3px 15px 3px 15px;"
                                        "border: 1px transparent #2A2929;"
                                        "border-radius: 4px;"
-                                       "background-color: #2A2929; }"
+                                       "background-color: transparent; }"
                                    "QScrollBar::handle:horizontal {"
                                        "background-color: gray;"
                                        "min-width: 5px;"
@@ -182,12 +174,10 @@ MainWindow::MainWindow(QWidget *parent)
                                        "width: 10px;"
                                        "subcontrol-position: left;"
                                        "subcontrol-origin: margin; }"
-                                   "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {"
-                                       "background: none; }"
                                    "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {"
                                        "background: none; }"
                                    "QScrollBar:vertical {"
-                                       "background-color: #2A2929;"
+                                       "background-color: transparent;"
                                        "width: 15px;"
                                        "margin: 15px 3px 15px 3px;"
                                        "border: 1px transparent #2A2929;"
@@ -226,7 +216,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QLineEdit* textInput2 = new QLineEdit();
     textInput2->setObjectName("TEXTINPUT2");
-    textInput2->setStyleSheet("QWidget#TEXTINPUT2 {color: #145573; background-color: beige;}");
+    textInput2->setStyleSheet("QWidget#TEXTINPUT2 {color: beige; background-color: #121e26;}");
 
     mainWidget->connect( textInput, &QLineEdit::returnPressed, [=](){treatInputTree(textInput);} );
     mainWidget->connect( textInput2, &QLineEdit::returnPressed, [=](){treatInputTree(textInput);} );

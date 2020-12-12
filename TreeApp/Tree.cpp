@@ -124,7 +124,7 @@ void ArbreB::print(MainWindow* w) /// afficher l'arbre dans la GUI
     panel->setObjectName("PANEL");
     panel->setStyleSheet(QString(
                          "QWidget#PANEL{"
-                         "background-color: #145573;}"));
+                         "background-color: #121e26;}"));
     Sommet::Buttonind = 20;
     root->print(panel,20,20);
     w->renderArea->setWidget(panel);
