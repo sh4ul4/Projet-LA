@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7esommet_13',['~Sommet',['../classSommet.html#a23a7ad681b25488d94737c8b5ae50eb4',1,'Sommet']]]
+  ['treatinputbinary_14',['treatInputBinary',['../classMainWindow.html#af9b928113a60c994ebac56328d3f4ecc',1,'MainWindow']]],
+  ['treatinputtree_15',['treatInputTree',['../classMainWindow.html#a292251a215c6bcde413b96ad5c38f0fd',1,'MainWindow']]]
 ];

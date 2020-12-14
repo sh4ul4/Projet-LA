@@ -99,6 +99,7 @@ void Sommet::clickedSlot(Panel* panel, const int& x, const int& y) /// réagir a
         label->raise();
         label->show();
         label->adjustSize();
+        panel->adjustSize();
     } else {
         delete label;
         label = nullptr;

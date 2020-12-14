@@ -16,7 +16,7 @@ void MainWindow::treatInputTree(QLineEdit* input) /// construire un ArbreB avec 
     if(ArbreB::printInstance != nullptr)ArbreB::printInstance->print(this);
 }
 
-void MainWindow::treatInputBinary(QLineEdit* input, QTextEdit* output) /// 
+void MainWindow::treatInputBinary(QLineEdit* input, QTextEdit* output) /// créer le code binaire résultant de l'arbre et le texte donnés
 {
 	// récupérer les lettres en entrée
     std::string text = input->text().toStdString();
@@ -31,16 +31,15 @@ void MainWindow::treatInputBinary(QLineEdit* input, QTextEdit* output) ///
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    //this->setFixedSize(920,640);
-    this->setMinimumSize(400,200);
-
+    this->setMinimumSize(800,400);
+    // créer le Widget principal contenant les autres
     mainWidget = new QWidget(this);
     mainWidget->setObjectName("MAINWIDGET");
-    mainWidget->setStyleSheet("QWidget#MAINWIDGET {background-color: #00111f;}");//#002b4a;}");//#1b2d5e
+    mainWidget->setStyleSheet("QWidget#MAINWIDGET {background-color: #00111f;}");
     setCentralWidget(mainWidget);
 
     layout = new QGridLayout();
-
+    // créer une sortie graphique pour l'affichage d'un arbre
     renderArea = new QScrollArea();
     renderArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
     renderArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -48,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     renderArea->setObjectName("RENDERAREA");
     renderArea->setStyleSheet(QString(
                                   "QWidget#RENDERAREA {"
-                                  "background-color: #121e26;"//#145573;"
+                                  "background-color: #121e26;"
                                   " font: bold 14px;"
                                   " min-width: 10em;"
                                   " border-radius: 3px;"
@@ -125,11 +124,11 @@ MainWindow::MainWindow(QWidget *parent)
                                        "background: none; }"));
     renderArea->setGeometry(20,20,0,0);
     renderArea->setMinimumSize(200,200);
-
+	// créer une première entrée de texte
     QLineEdit* textInput = new QLineEdit();
     textInput->setObjectName("TEXTINPUT");
     textInput->setStyleSheet("QWidget#TEXTINPUT {color: beige; background-color: #121e26;}");
-
+    // créer une sortie de texte
     QTextEdit* textOutput = new QTextEdit();
     textOutput->setStyleSheet("background : white");
     textOutput->setReadOnly(true);
@@ -137,7 +136,7 @@ MainWindow::MainWindow(QWidget *parent)
     textOutput->setObjectName("TEXTOUTPUT");
     textOutput->setStyleSheet(QString(
                                   "QWidget#TEXTOUTPUT {"
-                                  "background-color: #121e26;"//#145573;"
+                                  "background-color: #121e26;"
                                   " font: bold 14px;"
                                   " min-width: 10em;"
                                   " border-radius: 3px;"
@@ -213,16 +212,16 @@ MainWindow::MainWindow(QWidget *parent)
                                    "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
                                        "background: none; }"));
 	textOutput->setTextColor(QColorConstants::Svg::beige);
-
+	// créer une seconde entrée de texte
     QLineEdit* textInput2 = new QLineEdit();
     textInput2->setObjectName("TEXTINPUT2");
     textInput2->setStyleSheet("QWidget#TEXTINPUT2 {color: beige; background-color: #121e26;}");
-
+    // connecter les entrées texte aux fonctions correspondantes
     mainWidget->connect( textInput, &QLineEdit::returnPressed, [=](){treatInputTree(textInput);} );
     mainWidget->connect( textInput2, &QLineEdit::returnPressed, [=](){treatInputTree(textInput);} );
     mainWidget->connect( textInput2, &QLineEdit::returnPressed, [=](){treatInputBinary(textInput2,textOutput);} );
     mainWidget->connect( textInput, &QLineEdit::returnPressed, [=](){treatInputBinary(textInput2,textOutput);} );
-
+    // tout ajouter au layout actuel
     layout->addWidget(renderArea,0,0);
     layout->addWidget(textOutput,0,1);
     layout->addWidget(textInput,1,0);

@@ -117,6 +117,7 @@ void ArbreB::createPrintInstance(std::string text) /// créer une instance stati
     int a = 1;
     a = 2;
 }
+
 void ArbreB::print(MainWindow* w) /// afficher l'arbre dans la GUI
 {
     if(root == nullptr)return;
@@ -129,11 +130,13 @@ void ArbreB::print(MainWindow* w) /// afficher l'arbre dans la GUI
     root->print(panel,20,20);
     w->renderArea->setWidget(panel);
 }
+
 int ArbreB::search(std::string lookFor)const /// renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante
 {
     if(root == nullptr)return 0;
     return root->search(lookFor);
 }
+
 std::string ArbreB::codeText(const std::string text)  /// Converti un texte en code. Renvoit le texte codé, ou "Error" si le texte ne peux pas être codé.
 {
     //################## Vérifie que le texte est écrit dans la même langue. ##################//

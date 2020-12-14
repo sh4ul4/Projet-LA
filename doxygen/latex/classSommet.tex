@@ -39,6 +39,12 @@ std\+::string {\bfseries get\+Letters} () const
 \mbox{\Hypertarget{classSommet_af72716e499401a6773d838d40ecc586c}\label{classSommet_af72716e499401a6773d838d40ecc586c}} 
 \mbox{\hyperlink{classSommet}{Sommet}} \mbox{\hyperlink{classSommet_af72716e499401a6773d838d40ecc586c}{operator+}} (const \mbox{\hyperlink{classSommet}{Sommet}} \&s) const
 \begin{DoxyCompactList}\small\item\em concaténation de deux objets \mbox{\hyperlink{classSommet}{Sommet}} en créant un nouveau \mbox{\hyperlink{classSommet}{Sommet}} base \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSommet_ac7a61f41ea8fc3f958cb980529755386}\label{classSommet_ac7a61f41ea8fc3f958cb980529755386}} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classSommet}{Sommet}} \&s) const
+\item 
+\mbox{\Hypertarget{classSommet_a3c8af97addb885704c8ee42e507adb90}\label{classSommet_a3c8af97addb885704c8ee42e507adb90}} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{classSommet}{Sommet}} \&s) const
+\item 
 \mbox{\Hypertarget{classSommet_a12bd594f4d07bd6b5e28d999642b8431}\label{classSommet_a12bd594f4d07bd6b5e28d999642b8431}} 
 \mbox{\hyperlink{classSommet}{Sommet}} \& {\bfseries operator=} (const \mbox{\hyperlink{classSommet}{Sommet}} \&other)
 \item 
@@ -47,7 +53,10 @@ void \mbox{\hyperlink{classSommet_aaa9266edafe8c267a1520c976151055a}{print}} (\m
 \begin{DoxyCompactList}\small\item\em affichage complet récursif dans la G\+UI \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classSommet_adc5e9a6523b3e856a3f2e14c44d0b889}\label{classSommet_adc5e9a6523b3e856a3f2e14c44d0b889}} 
 int \mbox{\hyperlink{classSommet_adc5e9a6523b3e856a3f2e14c44d0b889}{search}} (const std\+::string look\+For) const
-\begin{DoxyCompactList}\small\item\em renvoie 0 si la valeur n\textquotesingle{}est pas présente, sinon la valeur correspondante \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em renvoie 0 si la valeur n\textquotesingle{}est pas présente, sinon la valeur correspondante \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSommet_ae368ac5f64b6fb56cd2f8ea774fa9538}\label{classSommet_ae368ac5f64b6fb56cd2f8ea774fa9538}} 
+std\+::string \mbox{\hyperlink{classSommet_ae368ac5f64b6fb56cd2f8ea774fa9538}{get\+Binary}} (const char c) const
+\begin{DoxyCompactList}\small\item\em renvoie le code binaire du caractère c \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Attributs publics}
 \begin{DoxyCompactItemize}
 \item 
@@ -62,15 +71,6 @@ int \mbox{\hyperlink{classSommet_adc5e9a6523b3e856a3f2e14c44d0b889}{search}} (co
 \item 
 \mbox{\Hypertarget{classSommet_a15928678e1b52ec98851136be458d5d3}\label{classSommet_a15928678e1b52ec98851136be458d5d3}} 
 static int {\bfseries Buttonind} = 0
-\end{DoxyCompactItemize}
-\doxysubsection*{Amis}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classSommet_a1d828eff7b77df41492ea29b001e8736}\label{classSommet_a1d828eff7b77df41492ea29b001e8736}} 
-bool {\bfseries operator$<$} (const \mbox{\hyperlink{classSommet}{Sommet}} \&a, const \mbox{\hyperlink{classSommet}{Sommet}} \&b)
-\item 
-\mbox{\Hypertarget{classSommet_aae94c6aa9971b2b514dcbe29b030e3a2}\label{classSommet_aae94c6aa9971b2b514dcbe29b030e3a2}} 
-bool {\bfseries operator$>$} (const \mbox{\hyperlink{classSommet}{Sommet}} \&a, const \mbox{\hyperlink{classSommet}{Sommet}} \&b)
 \end{DoxyCompactItemize}
 
 
