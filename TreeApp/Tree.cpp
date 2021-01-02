@@ -7,6 +7,11 @@ ArbreB::ArbreB(const Sommet& root)
     // copie récursive des valeurs
     if(root.left!=nullptr)this->root->setLeft(*root.left);
     if(root.right!=nullptr)this->root->setRight(*root.right);
+
+    for (char c: root.getLetters()) {
+        charToBinary.emplace(c, root.getBinary(c));
+        binaryToChar.emplace(root.getBinary(c), c);
+    }
 }
 const ArbreB ArbreB::operator+(const ArbreB& t) // addition de deux arbres par copie et concaténation
 {
@@ -46,31 +51,6 @@ void triSommetList(std::vector<Sommet*>& vec) {
         }
     }
     vec = tmp;
-
-
-
-
-
-
-
-    /*for (int i = 0; i < (int)vec.size(); i++) {
-        if (!tmp.empty()) {
-            for (int j = 0; j < (int)tmp.size(); j++) {
-                if (i == (int)vec.size()-1) {
-                    tmp.push_back(vec[i]);
-                    break;
-                }
-                if (vec[i]->getValue() < tmp[j]->getValue()) {
-                    tmp.insert(tmp.begin() + j, vec[i]);
-                    break;
-                }
-            }
-        }
-        else {
-            tmp.push_back(vec[i]);
-        }
-    }
-    vec = tmp;*/
 }
 
 void ArbreB::createPrintInstance(std::string text) /// créer une instance statique d'arbre pour l'affichage
@@ -113,9 +93,6 @@ void ArbreB::createPrintInstance(std::string text) /// créer une instance stati
     // libérer la mémoire restante
     delete sommets[0];
     sommets.clear();
-    std::string test = ArbreB::printInstance->codeText("a_dead_dad_ceded_a_bad_babe_a_beaded_abaca_bed");
-    int a = 1;
-    a = 2;
 }
 
 void ArbreB::print(MainWindow* w) /// afficher l'arbre dans la GUI
@@ -137,42 +114,38 @@ int ArbreB::search(std::string lookFor)const /// renvoie 0 si la valeur n'est pa
     return root->search(lookFor);
 }
 
-std::string ArbreB::codeText(const std::string text)  /// Converti un texte en code. Renvoit le texte codé, ou "Error" si le texte ne peux pas être codé.
+std::string ArbreB::encodeText(const std::string text)  /// Converti un texte en code. Renvoit le texte codé, ou "Error" si le texte ne peux pas être codé.
 {
-    //################## Vérifie que le texte est écrit dans la même langue. ##################//
-
-    // liste des lettres de l'arbre
-    std::vector<char>charArbre; // vecteur de tout les chars de l'arbre
-    for (char c: root->getLetters()) {
-        charArbre.push_back(c);
-    }
-    // liste des lettres du texte
-    std::vector<char>charText; // vecteur de tout les chars de l'arbre
+    std::string codedText = ""; // variable stockant le texte codé qui doit être retourné par la fonction
     for (char c: text) {
-
-        if (!(std::find(charText.begin(), charText.end(), c) != charText.end())) {
-            charText.push_back(c);
+        if (root->getLetters().find(c) != std::string::npos) { // verifie que la lettre est bien présente dans l'arbre
+            codedText += charToBinary.at(c); // utilise la map charToBinary pour transformer un char en binaire
         }
-    }
-    // comparaison
-    for (char c: charText) {
-        if (!(std::find(charArbre.begin(), charArbre.end(), c) != charArbre.end())) {
+        else {
             return "Error"; // la lettre n'est pas présente dans l'arbre -> erreur
         }
     }
-    //##################################### Code du texte #####################################//
+    return codedText;
+}
 
-    // creer le code binaire correspondant à chaques lettres
-    std::vector<std::string>binaryText;
-    for (char c: charArbre) {
-        binaryText.push_back(root->getBinary(c));
+std::string ArbreB::decodeBinary(const std::string binary){
+    int pos = 0;
+    int posDelta = 1;
+    std::string decodedBinary = "";
+    while (pos + posDelta <= (int)binary.size()){
+        if (binaryToChar.count(binary.substr(pos, posDelta))) {
+            decodedBinary += binaryToChar.at(binary.substr(pos,posDelta));
+            pos += posDelta;
+            posDelta = 1;
+        }
+        else {
+            posDelta++;
+        }
     }
-    // creer le code à partir des codes binaires de chaques lettres
-    std::string code = "";
-    for (char c: text) {
-        code += binaryText[std::distance(charArbre.begin(), std::find(charArbre.begin(), charArbre.end(), c))];
+    if (posDelta == 1) { // si le code arrive au dernier binaire sans avoir de binaire restant à convertir
+        return decodedBinary;
     }
-    return code;
+        return "Error"; // il y a un binaire ou plus restant qui ne peuvent pas être convertis -> Error
 }
 
 ArbreB* ArbreB::printInstance = nullptr; /// variable statique qui pointe vers l'arbre à afficher

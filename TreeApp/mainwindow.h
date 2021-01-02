@@ -15,6 +15,7 @@ public:
     QScrollArea* renderArea = nullptr;
     void treatInputTree(QLineEdit* input);
     void treatInputBinary(QLineEdit* input, QTextEdit* output);
+    void treatInputCoded(QLineEdit* input, QTextEdit* output);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
