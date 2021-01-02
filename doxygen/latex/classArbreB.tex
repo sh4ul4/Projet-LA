@@ -28,9 +28,12 @@ void \mbox{\hyperlink{classArbreB_a5d459a99af6288d9a2e723dc6e138cc8}{print}} (\m
 \mbox{\Hypertarget{classArbreB_a936256b38a3de6cdf8f29c2dee66c9ce}\label{classArbreB_a936256b38a3de6cdf8f29c2dee66c9ce}} 
 int \mbox{\hyperlink{classArbreB_a936256b38a3de6cdf8f29c2dee66c9ce}{search}} (std\+::string look\+For) const
 \begin{DoxyCompactList}\small\item\em renvoie 0 si la valeur n\textquotesingle{}est pas présente, sinon la valeur correspondante \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classArbreB_aac11ea46177019a9b464811c98aa6b35}\label{classArbreB_aac11ea46177019a9b464811c98aa6b35}} 
-std\+::string \mbox{\hyperlink{classArbreB_aac11ea46177019a9b464811c98aa6b35}{code\+Text}} (const std\+::string text)
-\begin{DoxyCompactList}\small\item\em Converti un texte en code. Renvoit le texte codé, ou \char`\"{}\+Error\char`\"{} si le texte ne peux pas être codé. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classArbreB_a7261b8e29a29dc3811400090bf530eff}\label{classArbreB_a7261b8e29a29dc3811400090bf530eff}} 
+std\+::string \mbox{\hyperlink{classArbreB_a7261b8e29a29dc3811400090bf530eff}{encode\+Text}} (const std\+::string text)
+\begin{DoxyCompactList}\small\item\em Converti un texte en code. Renvoit le texte codé, ou \char`\"{}\+Error\char`\"{} si le texte ne peux pas être codé. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classArbreB_ae0e97290bad04a756935d96427840d62}\label{classArbreB_ae0e97290bad04a756935d96427840d62}} 
+std\+::string {\bfseries decode\+Binary} (const std\+::string binary)
+\end{DoxyCompactItemize}
 \doxysubsection*{Fonctions membres publiques statiques}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,6 +45,12 @@ static void \mbox{\hyperlink{classArbreB_a9b96dad3026107a9719f97416ced4fbd}{crea
 \item 
 \mbox{\Hypertarget{classArbreB_a92900825bed148ad45b4f8b9212d72d7}\label{classArbreB_a92900825bed148ad45b4f8b9212d72d7}} 
 \mbox{\hyperlink{classSommet}{Sommet}} $\ast$ {\bfseries root}
+\item 
+\mbox{\Hypertarget{classArbreB_a72c851706e1db716e5b3075b6f0571c4}\label{classArbreB_a72c851706e1db716e5b3075b6f0571c4}} 
+std\+::unordered\+\_\+map$<$ char, std\+::string $>$ {\bfseries char\+To\+Binary}
+\item 
+\mbox{\Hypertarget{classArbreB_a46a7d36236a15a12b3cdc73980d6334e}\label{classArbreB_a46a7d36236a15a12b3cdc73980d6334e}} 
+std\+::unordered\+\_\+map$<$ std\+::string, char $>$ {\bfseries binary\+To\+Char}
 \end{DoxyCompactItemize}
 \doxysubsection*{Attributs publics statiques}
 \begin{DoxyCompactItemize}

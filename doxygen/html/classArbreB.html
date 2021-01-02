@@ -101,10 +101,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArbreB.html#a936256b38a3de6cdf8f29c2dee66c9ce">search</a> (std::string lookFor) const</td></tr>
 <tr class="memdesc:a936256b38a3de6cdf8f29c2dee66c9ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie 0 si la valeur n'est pas présente, sinon la valeur correspondante <br /></td></tr>
 <tr class="separator:a936256b38a3de6cdf8f29c2dee66c9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac11ea46177019a9b464811c98aa6b35"><td class="memItemLeft" align="right" valign="top"><a id="aac11ea46177019a9b464811c98aa6b35"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArbreB.html#aac11ea46177019a9b464811c98aa6b35">codeText</a> (const std::string text)</td></tr>
-<tr class="memdesc:aac11ea46177019a9b464811c98aa6b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti un texte en code. Renvoit le texte codé, ou "Error" si le texte ne peux pas être codé. <br /></td></tr>
-<tr class="separator:aac11ea46177019a9b464811c98aa6b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7261b8e29a29dc3811400090bf530eff"><td class="memItemLeft" align="right" valign="top"><a id="a7261b8e29a29dc3811400090bf530eff"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArbreB.html#a7261b8e29a29dc3811400090bf530eff">encodeText</a> (const std::string text)</td></tr>
+<tr class="memdesc:a7261b8e29a29dc3811400090bf530eff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converti un texte en code. Renvoit le texte codé, ou "Error" si le texte ne peux pas être codé. <br /></td></tr>
+<tr class="separator:a7261b8e29a29dc3811400090bf530eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e97290bad04a756935d96427840d62"><td class="memItemLeft" align="right" valign="top"><a id="ae0e97290bad04a756935d96427840d62"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>decodeBinary</b> (const std::string binary)</td></tr>
+<tr class="separator:ae0e97290bad04a756935d96427840d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
@@ -118,6 +121,12 @@ Attributs publics</h2></td></tr>
 <tr class="memitem:a92900825bed148ad45b4f8b9212d72d7"><td class="memItemLeft" align="right" valign="top"><a id="a92900825bed148ad45b4f8b9212d72d7"></a>
 <a class="el" href="classSommet.html">Sommet</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>root</b></td></tr>
 <tr class="separator:a92900825bed148ad45b4f8b9212d72d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72c851706e1db716e5b3075b6f0571c4"><td class="memItemLeft" align="right" valign="top"><a id="a72c851706e1db716e5b3075b6f0571c4"></a>
+std::unordered_map&lt; char, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>charToBinary</b></td></tr>
+<tr class="separator:a72c851706e1db716e5b3075b6f0571c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46a7d36236a15a12b3cdc73980d6334e"><td class="memItemLeft" align="right" valign="top"><a id="a46a7d36236a15a12b3cdc73980d6334e"></a>
+std::unordered_map&lt; std::string, char &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>binaryToChar</b></td></tr>
+<tr class="separator:a46a7d36236a15a12b3cdc73980d6334e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Attributs publics statiques</h2></td></tr>

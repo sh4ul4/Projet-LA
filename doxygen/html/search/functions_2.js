@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_2b_25',['operator+',['../classSommet.html#af72716e499401a6773d838d40ecc586c',1,'Sommet']]]
+  ['getbinary_25',['getBinary',['../classSommet.html#ae368ac5f64b6fb56cd2f8ea774fa9538',1,'Sommet']]]
 ];

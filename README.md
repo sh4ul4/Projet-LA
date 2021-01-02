@@ -39,3 +39,4 @@ Bien que la documentation a été pré-générée il suffit d'entrer le code sui
 make documentation
 ```
 La documentation se trouve dans le fichier [doxygen](/doxygen).  
+Accès rapide par [index.html](/doxygen/html/index.html).

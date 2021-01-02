@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getbinary_24',['getBinary',['../classSommet.html#ae368ac5f64b6fb56cd2f8ea774fa9538',1,'Sommet']]]
+  ['encodetext_24',['encodeText',['../classArbreB.html#a7261b8e29a29dc3811400090bf530eff',1,'ArbreB']]]
 ];

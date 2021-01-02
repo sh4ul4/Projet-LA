@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['panel_7',['Panel',['../classPanel.html',1,'']]],
-  ['print_8',['print',['../classSommet.html#aaa9266edafe8c267a1520c976151055a',1,'Sommet::print()'],['../classArbreB.html#a5d459a99af6288d9a2e723dc6e138cc8',1,'ArbreB::print()']]]
+  ['operator_2b_6',['operator+',['../classSommet.html#af72716e499401a6773d838d40ecc586c',1,'Sommet']]]
 ];
