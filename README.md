@@ -24,16 +24,17 @@ Ainsi un exécutable est produit.
 ```bash
 ./TreeApp
 ```
-La GUI qui apparaît contient deux entrées pour le clavier en bas de la fenêtre.  
+La GUI qui apparaît contient trois entrées pour le clavier en bas de la fenêtre.  
 Le texte entré à gauche initie l'affichage de l'arbre correspondant. 
-Le texte entré à droite initie l'affichage du code binaire correspondant.
+Le texte entré au milieu initie l'affichage du code binaire correspondant.
+Le texte entré à droite initie l'affichage du texte décodé correspondant.
 Un descriptif plus détaillé de la GUI ainsi que des photos exemples se trouvent dans [resume_GUI.pdf](/resume_GUI.pdf).
 
 ## Documentation
 
 La GUI est faite avec [Qt](https://www.qt.io/).
 Une documentation automatique est implémentée grâce à [Doxygen](https://www.doxygen.nl/index.html).  
-Bien que la documentation a été pré générée il suffit d'entrer le code suivant à la base du projet pour la regénérer: 
+Bien que la documentation a été pré-générée il suffit d'entrer le code suivant à la base du projet pour la regénérer: 
 ```bash
 make documentation
 ```
